@@ -8,13 +8,10 @@ import (
 )
 
 func GetMenu(c *gin.Context) {
-	collection := []models.Drink{
-		{ID: "1", Name: "Cappacino", Type: "warm", Price: 3.99},
-		{ID: "2", Name: "Icepack", Type: "cold", Price: 5.99},
-		{ID: "3", Name: "Tea", Type: "warm", Price: 2.19},
-		{ID: "4", Name: "Ice tea", Type: "cold", Price: 2.29},
-	}
+	var drinks []models.Drink
 
-	c.JSON(http.StatusOK, collection)
+	models.DB.Find(&drinks)
+
+	c.JSON(http.StatusOK, gin.H{"data": drinks})
 
 }
