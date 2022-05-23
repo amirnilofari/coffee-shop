@@ -15,7 +15,12 @@ func main() {
 	//connect to database
 	models.ConnectDB()
 
-	server.GET("/menu", GetMenu)
+	v1 := server.Group("/v1")
+	{
+		v1.GET("/order", OrderDrink)
+		v1.GET("/menu", GetMenu)
+	}
+
 	server.Run()
 
 }
