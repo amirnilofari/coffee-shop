@@ -17,7 +17,7 @@ func main() {
 
 	v1 := server.Group("/v1")
 	{
-		v1.GET("/order", OrderDrink)
+		v1.GET("/order", Order)
 		v1.GET("/menu", GetMenu)
 	}
 
